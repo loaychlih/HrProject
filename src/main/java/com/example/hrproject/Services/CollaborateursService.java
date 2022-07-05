@@ -2,13 +2,13 @@ package com.example.hrproject.Services;
 
 import com.example.hrproject.Entities.Collaborateur;
 import com.example.hrproject.Repositories.CollaborateursRepository;
+import com.example.hrproject.modals.CollabDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
 @Service
 public class CollaborateursService {
     private final CollaborateursRepository collaborateursRepository;
@@ -21,11 +21,8 @@ public class CollaborateursService {
         return collaborateursRepository.findAll();
     }
 
-    public void  saveCollab(Collaborateur newest){
-        CollaborateursRepository repository = null;
-        repository.save(newest);
-
-        return;
+    public void saveCollab(CollabDTO newest){
+        collaborateursRepository.save(newest.getCollab());
     }
 }
 

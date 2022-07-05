@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Entity
 @Table
 @Data
-
 public class Collaborateur {
     @Id
     @SequenceGenerator(
@@ -33,16 +32,16 @@ public class Collaborateur {
     @Transient
     private String abrev;
     private String ancienRH;
-    private String RhActuel;
+    private String nouveauRH;
     private String site;
-    private  String BU;
+    private String BU;
     private LocalDate embauche;
     private LocalDate BAP;
     private LocalDate depart;
-    private boolean AncienCollab;
+    private boolean ancienCollab;
     private boolean seminaire;
     private LocalDate dateSeminaire;
-    private String APP;
+    private String aPP;
     private  String poste;
     private double salaire;
 
@@ -63,16 +62,16 @@ public class Collaborateur {
                 ", prenom='" + prenom + '\'' +
                 ", abrev='" + abrev + '\'' +
                 ", ancienRH='" + ancienRH + '\'' +
-                ", RhActuel='" + RhActuel + '\'' +
+                ", RhActuel='" + nouveauRH + '\'' +
                 ", site='" + site + '\'' +
                 ", BU='" + BU + '\'' +
                 ", embauche=" + embauche +
                 ", BAP=" + BAP +
                 ", depart=" + depart +
-                ", AncienCollab=" + AncienCollab +
+                ", AncienCollab=" + ancienCollab +
                 ", seminaire=" + seminaire +
                 ", dateSeminaire=" + dateSeminaire +
-                ", APP='" + APP + '\'' +
+                ", APP='" + aPP + '\'' +
                 ", poste='" + poste + '\'' +
                 ", salaire=" + salaire +
                 '}';
