@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!--<a th:href="@{http://www.thymeleaf/documentation.html}">-->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Ajout de collaborateur</title>
@@ -10,13 +9,13 @@
 
 </head>
 <body>
-<!-- partial:index.partial.html -->
 <div class="login-form">
-    <form>
+    <!--/*@thymesVar id="Collaborateurs" type="com.example.hrproject.modals.CollabDTO"*/-->
+    <form action="#" th:action="@{/saveCollab}" th:object="${collabDTO}" class="CollabDTO" method="post">
         <h1>Ajout de Collaborateur</h1>
         <div class="content">
             <div class="input-field">
-                <input type="Nom" placeholder="Nom" autocomplete="nope">
+                <input type="Nom"  placeholder="Nom" autocomplete="nope">
             </div>
             <div class="input-field",>
                 <input type="Prénom" placeholder="Prénom" autocomplete="new-password">
