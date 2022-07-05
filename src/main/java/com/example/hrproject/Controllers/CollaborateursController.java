@@ -1,6 +1,6 @@
 package com.example.hrproject.Controllers;
 
-import com.example.hrproject.Entities.Collaborateurs;
+import com.example.hrproject.Entities.Collaborateur;
 import com.example.hrproject.Services.CollaborateursService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ public class CollaborateursController {
     }
 
     @GetMapping
-    public List<Collaborateurs> getCollabs (){
+    public List<Collaborateur> getCollabs (){
         return collaborateursService.getCollabs();
     }
 }

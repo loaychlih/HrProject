@@ -1,6 +1,6 @@
 package com.example.hrproject.Collaborateurs;
 
-import com.example.hrproject.Entities.Collaborateurs;
+import com.example.hrproject.Entities.Collaborateur;
 import com.example.hrproject.Repositories.CollaborateursRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +20,7 @@ public class CollaborateursConfig {
         System.out.print("\n \nPlease input lastname");
         String lastname =sc.nextLine();
         return args -> {
-  Collaborateurs first = new Collaborateurs(
+ /* Collaborateur first = new Collaborateur(
 
           name,
           lastname,
@@ -38,7 +38,7 @@ public class CollaborateursConfig {
           null,
           0
             );
-            repository.save(first);
+            repository.save(first);*/
         };
 
     }
