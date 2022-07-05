@@ -1,5 +1,6 @@
-package com.example.hrproject.Collaborateurs;
+package com.example.hrproject.Repositories;
 
+import com.example.hrproject.Entities.Collaborateurs;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

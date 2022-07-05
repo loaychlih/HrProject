@@ -1,14 +1,11 @@
 package com.example.hrproject.Collaborateurs;
 
-import com.example.hrproject.HrProjectApplication;
+import com.example.hrproject.Entities.Collaborateurs;
+import com.example.hrproject.Repositories.CollaborateursRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.List;
 import java.util.Scanner;
 
 @Configuration

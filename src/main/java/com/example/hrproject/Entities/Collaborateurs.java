@@ -1,4 +1,4 @@
-package com.example.hrproject.Collaborateurs;
+package com.example.hrproject.Entities;
 
 import lombok.Data;
 

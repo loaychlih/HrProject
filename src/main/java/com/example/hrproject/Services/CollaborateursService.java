@@ -1,10 +1,10 @@
-package com.example.hrproject.Collaborateurs;
+package com.example.hrproject.Services;
 
+import com.example.hrproject.Entities.Collaborateurs;
+import com.example.hrproject.Repositories.CollaborateursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @Component
