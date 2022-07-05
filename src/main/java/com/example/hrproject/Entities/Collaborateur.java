@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -45,10 +46,9 @@ public class Collaborateur {
     private String aPP;
     private  String poste;
     private double salaire;
-    @OneToMany(mappedBy="Collaborateur")
-    private Set<Competence> competences;
-    /*@OneToMany(mappedBy="Collaborateur")*/
 
+    @ManyToMany(mappedBy = "collaborateurs")
+    private Set<Competence> competenceSet;
     public String getAbrev() {
         return  prenom.substring(0,1)+nom.substring(0,2);
     }

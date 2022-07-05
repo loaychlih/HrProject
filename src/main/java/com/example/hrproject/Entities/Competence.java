@@ -3,10 +3,13 @@ package com.example.hrproject.Entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
-@Table()
+@Table
 @Entity
+
+
 public class Competence {
     @Id
     @SequenceGenerator(
@@ -18,7 +21,11 @@ public class Competence {
             strategy = GenerationType.SEQUENCE,
             generator = "competence_sequence"
     )
+
+
     private long competenceId;
-    private String competence;
+    private String name;
     private int note;
+    @ManyToMany
+    private Set<Collaborateur> collaborateurs;
 }
