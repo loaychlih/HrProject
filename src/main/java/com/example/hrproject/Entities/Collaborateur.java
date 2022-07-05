@@ -46,9 +46,10 @@ public class Collaborateur {
     private String aPP;
     private  String poste;
     private double salaire;
-
     @ManyToMany(mappedBy = "collaborateurs")
     private Set<Competence> competenceSet;
+    @OneToMany(mappedBy = "collaborateurs")
+    private Set<Diplome> DiplomeSet;
     public String getAbrev() {
         return  prenom.substring(0,1)+nom.substring(0,2);
     }
