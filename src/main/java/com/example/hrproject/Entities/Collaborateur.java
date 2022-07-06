@@ -52,7 +52,7 @@ public class Collaborateur {
     private String aPP;
     private  String poste;
     private double salaire;
-    @ManyToMany(mappedBy = "collaborateur",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "collaborateur",cascade = CascadeType.ALL)
     private Set<Competence> competences;
     @OneToMany(mappedBy = "collaborateur",cascade = CascadeType.ALL)
     private Set<Diplome> diplomes;

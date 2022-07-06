@@ -1,6 +1,8 @@
 package com.example.hrproject.Services;
 
 import com.example.hrproject.Entities.Collaborateur;
+import com.example.hrproject.Entities.Competence;
+import com.example.hrproject.Entities.Diplome;
 import com.example.hrproject.Repositories.CollaborateursRepository;
 import com.example.hrproject.Repositories.CompetenceRepository;
 import com.example.hrproject.Repositories.DiplomeRepository;
@@ -9,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class CollaborateursService {
@@ -31,13 +33,11 @@ public class CollaborateursService {
     }
 
     public void saveCollab(CollabDTO newest){
-        Collaborateur collab = newest.getCollab();
-//        collab.setDiplomes(newest.getDiplomes());
-//        collab.setCompetences(newest.getCompetences());
-
-
-
-//        collaborateursRepository.save(newest);
+       Collaborateur collab = newest.getCollab();
+        collab.setDiplomes(Set.copyOf(newest.getDiplomes()));
+        collab.setCompetences(Set.copyOf(newest.getCompetences()));
+        collaborateursRepository.save(newest.getCollab());
+        System.out.println("Saved :) ");
     }
 }
 

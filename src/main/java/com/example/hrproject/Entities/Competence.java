@@ -24,6 +24,7 @@ public class Competence {
     private long competenceId;
     private String name;
     private int note;
-    @ManyToMany
-    private Set<Collaborateur> collaborateur;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "matricule", nullable = false)
+    private Collaborateur collaborateur;
 }
