@@ -1,10 +1,12 @@
 package com.example.hrproject.Entities;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table
 public class Diplome {
@@ -18,14 +20,14 @@ public class Diplome {
             strategy = GenerationType.SEQUENCE,
             generator = "diplomes_sequence"
     )
-    private String diplomeID;
+    private int diplomeID;
     private String diplome;
     private String typeDiplome;
     private String ecole;
     private String typeEcole;
     private int promotion;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JoinColumn(name="matricule", nullable = false)
     private Collaborateur collaborateur;
 

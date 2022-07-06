@@ -19,12 +19,10 @@ public class Competence {
             strategy = GenerationType.SEQUENCE,
             generator = "competence_sequence"
     )
-
-
-    private long competenceId;
+    private int competenceId;
     private String name;
     private int note;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JoinColumn(name = "matricule", nullable = false)
     private Collaborateur collaborateur;
 }

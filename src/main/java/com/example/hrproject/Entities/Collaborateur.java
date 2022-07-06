@@ -4,15 +4,17 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name="Collaborateur")
-@Data
+@Getter
+@Setter
 public class Collaborateur {
     @Id
     @SequenceGenerator(
@@ -26,64 +28,74 @@ public class Collaborateur {
     )
 
 
-    private Long matricule;
+    private int matricule;
     private String nom;
     private String prenom;
     @Getter(value = AccessLevel.NONE)
     @Setter(value = AccessLevel.NONE)
     @Transient
-    private String abrev;
+    private String abrev ="Sdq";
     private String ancienRH;
     private String nouveauRH;
     private String site;
-    private String BU;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String bu;
     private LocalDate embauche;
-    @Transient
     @Getter(value = AccessLevel.NONE)
     @Setter(value = AccessLevel.NONE)
-    private String BAP;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Transient
+    private int bap = 5;
     private LocalDate depart;
     private boolean ancienCollab;
     private boolean seminaire;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateSeminaire;
-    private String aPP;
+    private String app;
     private  String poste;
     private double salaire;
     @OneToMany(mappedBy = "collaborateur",cascade = CascadeType.ALL)
-    private Set<Competence> competences;
+    @Getter(value = AccessLevel.NONE)
+    @Setter(value = AccessLevel.NONE)
+    private Set<Competence> competences = new HashSet<>();
     @OneToMany(mappedBy = "collaborateur",cascade = CascadeType.ALL)
-    private Set<Diplome> diplomes;
+    @Getter(value = AccessLevel.NONE)
+    @Setter(value = AccessLevel.NONE)
+    private Set<Diplome> diplomes = new HashSet<>();
 
+    public int getBap() {
+        return embauche.getDayOfMonth()>= 15 ? embauche.getMonthValue()+1 :embauche.getMonthValue() ;
+    }
+
+    public void setBap(int bap) {
+        this.bap = bap;
+    }
+    public void addCompetences(List<Competence> competences1){
+        for(Competence com : competences1) {
+            com.setCollaborateur(this);
+            competences.add(com);
+        }
+    }
+    public void removeCompetence(List<Competence> competences1){
+        for(Competence com : competences1) {
+            com.setCollaborateur(null);
+            competences.remove(com);
+        }
+    }
+    public void addDiplomes(List<Diplome> diplomes1){
+        System.out.println(diplomes1.size());
+        for(Diplome dip : diplomes1){
+            dip.setCollaborateur(this);
+            diplomes.add(dip);
+        }
+    }
+    public void removeDiplome(List<Diplome> diplomes1){
+        for(Diplome dip : diplomes1) {
+            dip.setCollaborateur(null);
+            diplomes.remove(dip);
+        }
+    }
     public String getAbrev() {
-        return  prenom.substring(0,1)+nom.substring(0,2);
+        return prenom.charAt(0)+nom.substring(0,2);
     }
     public void setAbrev(String abrev) {
         this.abrev = abrev;
-    }
-
-    @Override
-    public String toString() {
-        return "Collaborateurs{" +
-                "matricule=" + matricule +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", abrev='" + abrev + '\'' +
-                ", ancienRH='" + ancienRH + '\'' +
-                ", RhActuel='" + nouveauRH + '\'' +
-                ", site='" + site + '\'' +
-                ", BU='" + BU + '\'' +
-                ", embauche=" + embauche +
-                ", BAP=" + BAP +
-                ", depart=" + depart +
-                ", AncienCollab=" + ancienCollab +
-                ", seminaire=" + seminaire +
-                ", dateSeminaire=" + dateSeminaire +
-                ", APP='" + aPP + '\'' +
-                ", poste='" + poste + '\'' +
-                ", salaire=" + salaire +
-                '}';
     }
 }

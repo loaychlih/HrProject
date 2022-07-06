@@ -4,9 +4,8 @@ import com.example.hrproject.Entities.Collaborateur;
 import com.example.hrproject.Services.CollaborateursService;
 import com.example.hrproject.modals.CollabDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -31,6 +30,7 @@ public class CollaborateursController {
     }
 
     @PostMapping("/saveCollab")
+
     public String saveCollab (@RequestBody CollabDTO collabDTO){
         collaborateursService.saveCollab(collabDTO);
         return "Collab Saved !";

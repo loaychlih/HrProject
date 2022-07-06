@@ -33,9 +33,9 @@ public class CollaborateursService {
     }
 
     public void saveCollab(CollabDTO newest){
-       Collaborateur collab = newest.getCollab();
-        collab.setDiplomes(Set.copyOf(newest.getDiplomes()));
-        collab.setCompetences(Set.copyOf(newest.getCompetences()));
+        Collaborateur collab = newest.getCollab();
+        collab.addDiplomes(newest.getDiplomes());
+        collab.addCompetences(newest.getCompetences());
         collaborateursRepository.save(newest.getCollab());
         System.out.println("Saved :) ");
     }
