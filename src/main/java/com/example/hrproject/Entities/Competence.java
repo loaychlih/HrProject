@@ -6,10 +6,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Data
-@Table
+@Table()
 @Entity
-
-
 public class Competence {
     @Id
     @SequenceGenerator(
@@ -27,5 +25,5 @@ public class Competence {
     private String name;
     private int note;
     @ManyToMany
-    private Set<Collaborateur> collaborateurs;
+    private Set<Collaborateur> collaborateur;
 }

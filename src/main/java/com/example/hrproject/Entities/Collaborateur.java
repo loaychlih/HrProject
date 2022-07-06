@@ -4,10 +4,10 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,23 +37,29 @@ public class Collaborateur {
     private String nouveauRH;
     private String site;
     private String BU;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate embauche;
-    private LocalDate BAP;
+    @Transient
+    @Getter(value = AccessLevel.NONE)
+    @Setter(value = AccessLevel.NONE)
+    private String BAP;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate depart;
     private boolean ancienCollab;
     private boolean seminaire;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateSeminaire;
     private String aPP;
     private  String poste;
     private double salaire;
-    @ManyToMany(mappedBy = "collaborateurs")
-    private Set<Competence> competenceSet;
-    @OneToMany(mappedBy = "collaborateurs")
-    private Set<Diplome> DiplomeSet;
+    @ManyToMany(mappedBy = "collaborateur",cascade = CascadeType.ALL)
+    private Set<Competence> competences;
+    @OneToMany(mappedBy = "collaborateur",cascade = CascadeType.ALL)
+    private Set<Diplome> diplomes;
+
     public String getAbrev() {
         return  prenom.substring(0,1)+nom.substring(0,2);
     }
-
     public void setAbrev(String abrev) {
         this.abrev = abrev;
     }

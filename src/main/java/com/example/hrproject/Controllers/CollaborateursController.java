@@ -10,14 +10,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class CollaborateursController {
 
     private final CollaborateursService collaborateursService;
 
     @GetMapping
     public String welcome(@ModelAttribute CollabDTO collabDTO){
-        return "AjoutCollab";
+        return "Bonjour !";
     }
 
     @Autowired
@@ -31,8 +31,9 @@ public class CollaborateursController {
     }
 
     @PostMapping("/saveCollab")
-    public String saveCollab (@ModelAttribute CollabDTO collabDTO){
+    public String saveCollab (@RequestBody CollabDTO collabDTO){
         collaborateursService.saveCollab(collabDTO);
         return "Collab Saved !";
     }
+
 }
