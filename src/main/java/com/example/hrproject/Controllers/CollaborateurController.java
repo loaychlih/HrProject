@@ -1,36 +1,34 @@
 package com.example.hrproject.Controllers;
 
 import com.example.hrproject.Entities.Collaborateur;
-import com.example.hrproject.Services.CollaborateursService;
+import com.example.hrproject.Services.CollaborateurService;
 import com.example.hrproject.modals.CollabDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class CollaborateursController {
+public class CollaborateurController {
 
-    private final CollaborateursService collaborateursService;
+    private final CollaborateurService collaborateursService;
 
     @GetMapping
-    public String welcome(@ModelAttribute CollabDTO collabDTO){
+    public String welcome(){
         return "Bonjour !";
     }
 
     @Autowired
-    public CollaborateursController(CollaborateursService collaborateursService) {
+    public CollaborateurController(CollaborateurService collaborateursService) {
         this.collaborateursService = collaborateursService;
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAllCollabs")
     public List<Collaborateur> getCollabs (){
         return collaborateursService.getCollabs();
     }
 
     @PostMapping("/saveCollab")
-
     public String saveCollab (@RequestBody CollabDTO collabDTO){
         collaborateursService.saveCollab(collabDTO);
         return "Collab Saved !";
